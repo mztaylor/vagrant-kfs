@@ -16,18 +16,23 @@ to get a working instance of KFS (and potentially other Kuali products)
 
 
 ## Development Steps
+
 ### Initializing Vagrant environment
 - mkdir vagrant-kfs; cd vagrant-kfs
 - vagrant init
+
 ### Build basic box (precise32 - Ubuntu 12.04 LTS)
-- vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+- vagrant box add precise32 http://files.vagrantup.com/precise32.box
 - (edit vagrant file: modify config.vm.box "precise32")
 - vagrant up
 - vagrant halt
+
 ### Save work to git
-git init
-git add .
-git commit -m "basic box setup"
+
+  git init
+  git add .
+  git commit -m "basic box setup"
+
 ### Add new directories for chef scripts (for mvn,svn,java,tomcat) and scripts (for kr/kfs)
 - mkdir cookbooks
 - mkdir scripts
