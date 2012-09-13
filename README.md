@@ -13,7 +13,7 @@ to get a working instance of KFS (and potentially other Kuali products)
 ## Steps
 - Install ruby, virtualbox and vagrant
 -- notes found at http://vagrantup.com/v1/docs/getting-started/index.html
-
+- Next step: adding chef cookbooks for java, svn, mvn, mysql, tomcat
 
 ## Development Steps
 
