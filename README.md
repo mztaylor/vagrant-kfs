@@ -29,9 +29,9 @@ to get a working instance of KFS (and potentially other Kuali products)
 
 ### Save work to git
 
-  git init
-  git add .
-  git commit -m "basic box setup"
+    git init
+    git add .
+    git commit -m "basic box setup"
 
 ### Add new directories for chef scripts (for mvn,svn,java,tomcat) and scripts (for kr/kfs)
 - mkdir cookbooks
