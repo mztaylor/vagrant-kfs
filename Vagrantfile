@@ -68,17 +68,26 @@ Vagrant::Config.run do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding 
   # some recipes and/or roles.
   #
-  # config.vm.provision :chef_solo do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
+  config.vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "./cookbooks"
+    chef.add_recipe "ark"
+    chef.add_recipe "apt"
+    chef.add_recipe "java"
+    chef.add_recipe "subversion"
+    chef.add_recipe "maven"
+    chef.add_recipe "tomcat"
+    chef.add_recipe "OpenSSL"
+    chef.add_recipe "mysql"
+    chef.add_recipe "mysql::server"
   #
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
-  # end
-
+  end
+  #
+  #
+  # Run rice build script 
+  config.vm.provision :shell, :path => "./scripts/build-rice.sh"
+  #
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
   #
