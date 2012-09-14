@@ -47,9 +47,10 @@ These steps are for me as much as anyone to retrace my steps through this proces
 
 - Notes: Had to modify maven.tar.gz and several dependent repos (OpenSSL, ark, apt)
  - Had issues with the mysql server, investigating
-- Installed veewee (gems install veewee) to build vm from scratch (wanted to bump the memory and include a ui)
+- Installed veewee to build vm from scratch (wanted to bump the memory and include a ui)
  - Found the process of downloading the vm extremely slow
 
+    gem install veewee
     vagrant basebox build 'ubuntu-12.04.1-server-i386'
     vagrant basebox validate 'ubuntu-12.04.1-server-i386'
     vagrant basebox export 'ubuntu-12.04.1-server-i386'
