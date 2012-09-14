@@ -1,8 +1,8 @@
 KFS Build on Vagrant
 ====================
 ## Introduction
-This is a starting point for building KFS instantly, allowing new developers 
-to get a working instance of KFS (and potentially other Kuali products) 
+Using this is a starting point for building Rice and KFS from a template script. I would like this project to help
+make generating development environments easier (by using a vm, ec2 instance, or chef scripts on their local env).
 
 ## Prerequisites 
 - Oracle Virtualbox 4.0.12+
