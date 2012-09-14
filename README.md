@@ -9,6 +9,7 @@ make generating development environments easier (by using a vm, ec2 instance, or
 - Ruby 1.9.x+
 - Vagrant (www.vagrantup.com)
 - Chef Solo (www.opscode.com TBD)
+- Veewee
 
 ## Steps
 - Install ruby, virtualbox and vagrant
@@ -17,6 +18,7 @@ make generating development environments easier (by using a vm, ec2 instance, or
 - Next step: fixing recipe for mysql server
 
 ## Development Steps
+These steps are for me as much as anyone to retrace my steps through this process
 
 ### Initializing Vagrant environment
     mkdir vagrant-kfs
@@ -27,7 +29,7 @@ make generating development environments easier (by using a vm, ec2 instance, or
     vagrant box add precise32 http://files.vagrantup.com/precise32.box
 (edit vagrant file: modify config.vm.box "precise32")
    vagrant up
-    vagrant halt
+   vagrant halt
 
 ### Save work to git
 
@@ -38,6 +40,17 @@ make generating development environments easier (by using a vm, ec2 instance, or
 ### Add new directories for chef scripts (for mvn,svn,java,tomcat) and scripts (for kr/kfs)
 
     mkdir cookbooks
+    cd cookbooks
+    ## curl and extract cookbooks for ark, apt, OpenSSL, maven, subversion, java, and mysql
     mkdir scripts
-- Notes: Had to modify maven.tar.gz and several dependent repos (OpenSSL, ark, apt)
+    ## added build-rice.sh
 
+- Notes: Had to modify maven.tar.gz and several dependent repos (OpenSSL, ark, apt)
+ - Had issues with the mysql server, investigating
+- Installed veewee (gems install veewee) to build vm from scratch (wanted to bump the memory and include a ui)
+ - Found the process of downloading the vm extremely slow
+
+    vagrant basebox build 'ubuntu-12.04.1-server-i386'
+    vagrant basebox validate 'ubuntu-12.04.1-server-i386'
+    vagrant basebox export 'ubuntu-12.04.1-server-i386'
+    vagrant add box 'ubuntu-12.04.1-server-i386' ubuntu-12.04.1-server-i386.box
