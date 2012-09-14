@@ -13,7 +13,8 @@ to get a working instance of KFS (and potentially other Kuali products)
 ## Steps
 - Install ruby, virtualbox and vagrant
 -- notes found at http://vagrantup.com/v1/docs/getting-started/index.html
-- Next step: adding chef cookbooks for java, svn, mvn, mysql, tomcat
+-- added chef cookbooks for java, svn, mvn, mysql, tomcat
+- Next step: fixing recipe for mysql server
 
 ## Development Steps
 
@@ -22,10 +23,10 @@ to get a working instance of KFS (and potentially other Kuali products)
 - vagrant init
 
 ### Build basic box (precise32 - Ubuntu 12.04 LTS)
-- vagrant box add precise32 http://files.vagrantup.com/precise32.box
-- (edit vagrant file: modify config.vm.box "precise32")
-- vagrant up
-- vagrant halt
+    vagrant box add precise32 http://files.vagrantup.com/precise32.box
+(edit vagrant file: modify config.vm.box "precise32")
+   vagrant up
+    vagrant halt
 
 ### Save work to git
 
@@ -34,6 +35,7 @@ to get a working instance of KFS (and potentially other Kuali products)
     git commit -m "basic box setup"
 
 ### Add new directories for chef scripts (for mvn,svn,java,tomcat) and scripts (for kr/kfs)
-- mkdir cookbooks
-- mkdir scripts
+
+    mkdir cookbooks
+    mkdir scripts
 
