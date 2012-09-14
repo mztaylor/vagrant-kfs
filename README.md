@@ -19,8 +19,9 @@ to get a working instance of KFS (and potentially other Kuali products)
 ## Development Steps
 
 ### Initializing Vagrant environment
-- mkdir vagrant-kfs; cd vagrant-kfs
-- vagrant init
+    mkdir vagrant-kfs
+    cd vagrant-kfs
+    vagrant init
 
 ### Build basic box (precise32 - Ubuntu 12.04 LTS)
     vagrant box add precise32 http://files.vagrantup.com/precise32.box
