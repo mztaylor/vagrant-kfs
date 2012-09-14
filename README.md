@@ -8,7 +8,7 @@ to get a working instance of KFS (and potentially other Kuali products)
 - Oracle Virtualbox 4.0.12+
 - Ruby 1.9.x+
 - Vagrant (www.vagrantup.com)
-
+- Chef Solo (www.opscode.com TBD)
 
 ## Steps
 - Install ruby, virtualbox and vagrant
