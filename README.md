@@ -12,8 +12,8 @@ to get a working instance of KFS (and potentially other Kuali products)
 
 ## Steps
 - Install ruby, virtualbox and vagrant
--- notes found at http://vagrantup.com/v1/docs/getting-started/index.html
--- added chef cookbooks for java, svn, mvn, mysql, tomcat
+ - notes found at http://vagrantup.com/v1/docs/getting-started/index.html
+ - added chef cookbooks for java, svn, mvn, mysql, tomcat
 - Next step: fixing recipe for mysql server
 
 ## Development Steps
@@ -38,4 +38,5 @@ to get a working instance of KFS (and potentially other Kuali products)
 
     mkdir cookbooks
     mkdir scripts
+- Notes: Had to modify maven.tar.gz and several dependent repos (OpenSSL, ark, apt)
 
