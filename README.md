@@ -9,11 +9,12 @@ make generating development environments easier (by using a vm, ec2 instance, or
 - Ruby 1.9.x+
 - Vagrant (www.vagrantup.com)
 - Chef Solo (www.opscode.com TBD)
-- Veewee
+- Veewee 0.30+ (https://github.com/jedi4ever/veewee)
 
 ## Steps
 - Install ruby, virtualbox and vagrant
- - notes found at http://vagrantup.com/v1/docs/getting-started/index.html
+ - suggest using railsinstaller.org for ruby install
+ - notes for vagrant found at http://vagrantup.com/v1/docs/getting-started/index.html
  - added chef cookbooks for java, svn, mvn, mysql, tomcat
 - Next step: fixing recipe for mysql server
 
@@ -49,6 +50,8 @@ These steps are for me as much as anyone to retrace my steps through this proces
  - Had issues with the mysql server, investigating
 - Installed veewee to build vm from scratch (wanted to bump the memory and include a ui)
  - Found the process of downloading the vm extremely slow
+ - TODO: Update notes on building veewee from scratch; gems version is too old
+ - TODO: Rename box to include gui to differentiate from standard server
 
     gem install veewee
     vagrant basebox build 'ubuntu-12.04.1-server-i386'

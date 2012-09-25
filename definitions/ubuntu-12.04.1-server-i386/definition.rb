@@ -31,5 +31,6 @@ Veewee::Session.declare({
   :sudo_cmd => "echo '%p'|sudo -S sh '%f'",
   :shutdown_cmd => "shutdown -P now",
   :postinstall_files => [ "postinstall.sh"],
-  :postinstall_timeout => "10000"
+  :postinstall_timeout => "10000",
+  :virtualbox => { :vm_options => [{:vram => '64'}] }
 })

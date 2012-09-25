@@ -10,6 +10,8 @@ apt-get -y upgrade
 apt-get -y install linux-headers-$(uname -r) build-essential
 apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev
 apt-get -y install vim
+apt-get -y install --no-install-recommends ubuntu-desktop
+
 apt-get clean
 
 # Installing the virtualbox guest additions
