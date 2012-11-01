@@ -10,13 +10,13 @@ make generating development environments easier (by using a vm, ec2 instance, or
 - Vagrant (www.vagrantup.com)
 - Chef Solo (www.opscode.com TBD)
 - Veewee 0.30+ (https://github.com/jedi4ever/veewee)
+- librarian-chef
 
 ## Steps
-- Install ruby, virtualbox and vagrant
+- Install ruby, librarian-chef, virtualbox and vagrant
  - suggest using railsinstaller.org for ruby install
  - notes for vagrant found at http://vagrantup.com/v1/docs/getting-started/index.html
  - added chef cookbooks for java, svn, mvn, mysql, tomcat
-- Next step: fixing recipe for mysql server
 
 ## Development Steps
 These steps are for me as much as anyone to retrace my steps through this process
@@ -40,9 +40,8 @@ These steps are for me as much as anyone to retrace my steps through this proces
 
 ### Add new directories for chef scripts (for mvn,svn,java,tomcat) and scripts (for kr/kfs)
 
-    mkdir cookbooks
-    cd cookbooks
-    ## curl and extract cookbooks for ark, apt, OpenSSL, maven, subversion, java, and mysql
+    touch Cheffile # already included in project
+    librarian-chef install
     mkdir scripts
     ## added build-rice.sh
 
@@ -58,3 +57,6 @@ These steps are for me as much as anyone to retrace my steps through this proces
     vagrant basebox validate 'ubuntu-12.04.1-server-i386'
     vagrant basebox export 'ubuntu-12.04.1-server-i386'
     vagrant add box 'ubuntu-12.04.1-server-i386' ubuntu-12.04.1-server-i386.box
+
+- When setting up unity desktop, include ubuntu-tweak to handle hiding of launcher bar (gets annoying when menus are hidden below it)
+
