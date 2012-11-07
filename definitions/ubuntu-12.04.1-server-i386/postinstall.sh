@@ -8,6 +8,7 @@ date > /etc/vagrant_box_build_time
 apt-get -y update
 apt-get -y upgrade
 apt-get -y install linux-headers-$(uname -r) build-essential
+apt-get -y install linux-headers-$(uname -r)-generic-pae
 apt-get -y install zlib1g-dev libssl-dev libreadline-gplv2-dev
 apt-get -y install vim
 apt-get -y install --no-install-recommends ubuntu-desktop
@@ -15,6 +16,7 @@ apt-get -y install --no-install-recommends ubuntu-desktop
 apt-get clean
 
 # Installing the virtualbox guest additions
+
 apt-get -y install dkms
 VBOX_VERSION=$(cat /home/vagrant/.vbox_version)
 cd /tmp
@@ -92,4 +94,6 @@ rm /lib/udev/rules.d/75-persistent-net-generator.rules
 
 echo "Adding a 2 sec delay to the interface up, to make the dhclient happy"
 echo "pre-up sleep 2" >> /etc/network/interfaces
+
+sudo /etc/init.d/vboxadd setup
 exit
