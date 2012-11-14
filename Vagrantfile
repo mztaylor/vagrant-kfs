@@ -35,7 +35,7 @@ Vagrant::Config.run do |config|
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
   # config.vm.share_folder "v-data", "/vagrant_data", "../data"
-
+  config.vm.customize ["modifyvm", :id, "--memory", 2048]
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
   # You will need to create the manifests directory and a manifest in
@@ -79,6 +79,8 @@ Vagrant::Config.run do |config|
     chef.json = {
 		"mysql" => {
 			"server_root_password" => "root",
+      "server_repl_password" => "root",
+      "server_debian_password" => "root",
 			"bind_address" => "0.0.0.0",
 			"port" => "3306",
 			"tunable" => {
