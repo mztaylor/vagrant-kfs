@@ -38,7 +38,7 @@
 
 <config> 
 <!-- BEGIN: added rice directory -->
-<param name="rice.dir">/Users/mztaylor/kuali/rice</param>
+<param name="rice.dir"><%= node[:kuali][:rice][:config_dir] %></param>
 <!-- END: added rice directory -->
 <!-- Please fill in a value for this parameter! -->
 <param name="http.port"><%= node[:rice][:config][:http.port] %></param> 
