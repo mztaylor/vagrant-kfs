@@ -18,6 +18,7 @@ make generating development environments easier (by using a vm, ec2 instance, or
  - notes for vagrant found at http://vagrantup.com/v1/docs/getting-started/index.html
  - added chef cookbooks for java, svn, mvn, mysql, tomcat
 
+
     git clone https://github.com/mztaylor/vagrant-kfs.git
     cd vagrant-kfs
     librarian-chef install
