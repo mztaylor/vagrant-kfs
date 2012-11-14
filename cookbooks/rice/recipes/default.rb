@@ -28,47 +28,77 @@ end
 
 directory node[:rice][:config_dir] do
   owner node[:rice][:user]
-  mode "0755"
+  mode "0777"
   action :create
   recursive true
 end
 
 directory node[:rice][:src_dir] do
   owner node[:rice][:user]
-  mode "0755"
+  mode "0777"
   action :create
   recursive true
 end
+
 
 directory node[:rice][:log_dir] do
-  mode 0755
   owner node[:rice][:user]
+  mode "0777"
   action :create
   recursive true
 end
 
-subversion "rice" do
+template "#{node[:rice][:config_dir]}/sample-app-config.xml" do 
+  source "sample-app-config.xml.erb"
+  mode "0777"
+  owner node[:rice][:user]
+end
+
+ENV['MAVEN_OPTS'] = " -Xmx1g -XX:MaxPermSize=256m "
+ENV['HOME'] = "/home/vagrant/"
+bash "impex_rice_database" do
+  cwd Chef::Config[:file_cache_path]
+  code <<-EOH
+    echo cd #{node[:rice][:src_dir]}/rice/db/impex/master
+    cd #{node[:rice][:src_dir]}/rice/db/impex/master
+    mvn -Pdb,mysql clean install -Dimpex.dba.password=root
+  EOH
+  action :nothing
+end
+
+bash "compile_rice_source" do
+  cwd Chef::Config[:file_cache_path]
+  code <<-EOH
+    cd #{node[:rice][:src_dir]}/rice
+    mvn -Dmaven.test.skip=true package
+  EOH
+  action :nothing
+end
+
+subversion "rice_source" do
   repository "https://svn.kuali.org/repos/rice/trunk/"
   revision "HEAD"
   destination "/opt/src/rice"
   action :sync
+  notifies resources(:bash => "impex_rice_database"), resources(:bash => "compile_rice_source")
 end
 
+cookbook_file "#{node[:rice][:src_dir]}/rice/pom.xml.patch" do
+  source "rice-pom.xml.patch" # this is the value that would be inferred from the path parameter
+  owner node[:rice][:user]
+  backup false
+  mode "0777"
+end
 
-bash "compile_rice_source" do
+bash "start_rice_sampleapp" do
+  cwd Chef::Config[:file_cache_path]
   code <<-EOH
-  cd /usr/lib/jvm
+    cd #{node[:rice][:src_dir]}/rice
+    patch pom.xml > pom.xml.patch
+    cd #{node[:rice][:src_dir]}/rice/sampleapp
+    mvn -Dalt.config.location=#{node[:rice][:home_dir]}/sample-app-config.xml -Dmaven.test.skip=true tomcat:run-war -Dojdbc14.jar.location=""
   EOH
-  creates "/opt/src/rice"
 end
 
 
-service "rice" do
-  provider Chef::Provider::Service::Upstart
-  subscribes :restart, resources(:bash => "compile_rice_source")
-  supports :restart => true, :start => true, :stop => true
-end
 
-service "rice" do
-  action [:enable, :start]
-end

@@ -1,6 +1,41 @@
 <?xml version="1.0"?>
 
 <!-- Copyright 2008-2009 The Kuali Foundation Licensed under the Educational Community License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.opensource.org/licenses/ecl2.php Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
+<config>
+
+    <param name="hostname">localhost</param>
+    <param name="http.port"><%= node[:kuali][:rice][:configuration][:http_port] %></param>
+    <param name="rice.server.url">http://localhost:${http.port}/<%= node[:kuali][:rice][:configuration][:module_name] %></param>
+    <!-- param name="application.url">http://${hostname}:${http.port}/standalone</param -->
+    <param name="application.url">http://${hostname}:${http.port}/kr-dev</param>
+    <param name="serviceServletUrl">${rice.server.url}/remoting/</param>
+    
+    <param name="kfs.url">http://localhost:8080/kfs-dev</param>
+
+    <param name="filter.login.class">org.kuali.rice.kew.web.DummyLoginFilter</param>
+    <param name="filtermapping.login.1">/*</param>
+    <param name="dev.mode">false</param>
+    <param name="rice.ksb.batch.mode">false</param>
+    <param name="rice.standalone">true</param>
+
+	<param name="datasource.username"><%= node[:kuali][:rice][:configuration][:datasource][:username] %></param>
+    <param name="datasource.password"><%= node[:kuali][:rice][:configuration][:datasource][:password] %></param>
+    <param name="datasource.url"><%= node[:kuali][:rice][:configuration][:datasource][:url] %></param>	
+    <param name="datasource.ojb.platform"><%= node[:kuali][:rice][:configuration][:datasource][:ojb_platform] %></param>
+    <param name="datasource.platform"><%= node[:kuali][:rice][:configuration][:datasource][:platform] %></param>
+    <param name="datasource.driver.name"><%= node[:kuali][:rice][:configuration][:datasource][:driver_name] %></param>
+
+    <param name="keystore.file"><%= node[:kuali][:rice][:config_dir]/rice.keystore %></param>
+    <param name="keystore.alias"><%= node[:kuali][:rice][:configuration][:keystore][:alias] %></param>
+    <param name="keystore.password"><%= node[:kuali][:rice][:configuration][:keystore][:password] %></param> 
+
+    <param name="dev.mode"><%= node[:kuali][:rice][:configuration][:dev_mode] %></param>
+
+    <% node[:kuali][:rice][:configuration][:tunable].each do |config_key| -%>
+    <param name="<%= config_key %>"><%= node[:kuali][:rice][:configuration][:tunable][:#{config_key}] %></param>
+    <% end -%>
+</config>
+
 <config> 
 <!-- BEGIN: added rice directory -->
 <param name="rice.dir">/Users/mztaylor/kuali/rice</param>
