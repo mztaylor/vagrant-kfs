@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<!-- Copyright 2008-2009 The Kuali Foundation Licensed under the Educational Community License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.opensource.org/licenses/ecl2.php Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. -->
+<config>
+
+    <param name="hostname">localhost</param>
+    <param name="http.port"><%= node[:kuali][:rice][:configuration][:http_port] %></param>
+    <param name="rice.server.url">http://localhost:${http.port}/<%= node[:kuali][:rice][:configuration][:module_name] %></param>
+    <!-- param name="application.url">http://${hostname}:${http.port}/standalone</param -->
+    <param name="application.url">http://${hostname}:${http.port}/kr-dev</param>
+    <param name="serviceServletUrl">${rice.server.url}/remoting/</param>
+    
+    <param name="kfs.url">http://localhost:8080/kfs-dev</param>
+
+    <param name="filter.login.class">org.kuali.rice.kew.web.DummyLoginFilter</param>
+    <param name="filtermapping.login.1">/*</param>
+    <param name="dev.mode">false</param>
+    <param name="rice.ksb.batch.mode">false</param>
+    <param name="rice.standalone">true</param>
+
+	<param name="datasource.username"><%= node[:kuali][:rice][:configuration][:datasource][:username] %></param>
+    <param name="datasource.password"><%= node[:kuali][:rice][:configuration][:datasource][:password] %></param>
+    <param name="datasource.url"><%= node[:kuali][:rice][:configuration][:datasource][:url] %></param>	
+    <param name="datasource.ojb.platform"><%= node[:kuali][:rice][:configuration][:datasource][:ojb_platform] %></param>
+    <param name="datasource.platform"><%= node[:kuali][:rice][:configuration][:datasource][:platform] %></param>
+    <param name="datasource.driver.name"><%= node[:kuali][:rice][:configuration][:datasource][:driver_name] %></param>
+
+    <param name="keystore.file"><%= node[:kuali][:rice][:config_dir]/rice.keystore %></param>
+    <param name="keystore.alias"><%= node[:kuali][:rice][:configuration][:keystore][:alias] %></param>
+    <param name="keystore.password"><%= node[:kuali][:rice][:configuration][:keystore][:password] %></param> 
+
+    <param name="dev.mode"><%= node[:kuali][:rice][:configuration][:dev_mode] %></param>
+
+    <% node[:kuali][:rice][:configuration][:tunable].each do |config_key| -%>
+    <param name="<%= config_key %>"><%= node[:kuali][:rice][:configuration][:tunable][:#{config_key}] %></param>
+    <% end -%>
+</config>
+
+<config> 
+<!-- BEGIN: added rice directory -->
+<param name="rice.dir"><%= node[:kuali][:rice][:config_dir] %></param>
+<!-- END: added rice directory -->
+<!-- Please fill in a value for this parameter! -->
+<param name="http.port"><%= node[:rice][:config][:http.port] %></param> 
+<param name="application.host"><%= node[:rice][:config][:application.host] %></param> 
+<param name="application.url">${application.host}:${http.port}/${app.context.name}</param> 
+<param name="plugin.dir"><%= node[:rice][:config][:rice.dir] %>/plugins</param> 
+<!-- set some datasource defaults -->
+<param name="datasource.username"><%= node[:rice][:config][:datasource.username] %></param> 
+<param name="datasource.password"><%= node[:rice][:config][:datasource.password] %></param> 
+<!-- Oracle example <param name="datasource.ojb.platform">Oracle9i</param> 
+<param name="datasource.platform"><%= node[:rice][:config][:datasource][:platform] %></param> 
+<param name="datasource.url"><%= node[:rice][:config][:datasource][:platform] %></param>
+<param name="datasource.driver.name"><%= node[:rice][:config][:datasource][:platform] %></param>
+<param name="datasource.pool.validationQuery">select 1 from dual</param> -->
+<param name="attachment.dir.location"><%= node[:rice][:config][:rice.dir] %>/kew_attachments</param> 
+<param name="data.xml.root.location"><%= node[:rice][:config][:rice.dir] %>/kew/xml</param>
+<!-- log4j settings -->
+<param name="log4j.settings.path">${rice.dir}/log4j.properties</param> 
+<param name="log4j.settings.reloadInterval">5</param> 
+<!-- Keystore Configuration -->
+<param name="keystore.file"><%= node[:rice][:config][:rice.dir] %>/rice.keystore</param> 
+<param name="keystore.alias">*** key alias ***</param> 
+<param name="keystore.password">*** password ***</param> 
+<param name="mail.relay.server">localhost</param> 
+<param name="mailing.list.batch">mailing.list.batch</param> 
+<param name="encryption.key">*** encryption key ***</param> 
+<!-- Dummy Login Filter - use if you don't want to go through CAS -->
+<param name="filter.login.class">org.kuali.rice.kew.web.DummyLoginFilter</param> 
+<param name="filtermapping.login.1">/*</param> 
+<!-- Allow for single sign-out for CAS <param name="listener.logout.class">org.jasig.cas.client.session.SingleSignOutHttpSessionListener</param> -->
+
+<!-- Sample Application Flag -->
+<param name="sample.enabled">false</param> 
+<param name="dev.mode">false</param> 
+
+</config>
