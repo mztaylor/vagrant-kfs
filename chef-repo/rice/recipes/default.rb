@@ -63,6 +63,7 @@ end
 
 bash "symlink_java_home" do
   cwd Chef::Config[:file_cache_path]
+  user "root"
   code <<-EOH
     cd /usr/lib/jvm
     ln -fs java-6-openjdk-i386 default-java
@@ -116,9 +117,19 @@ subversion "rice_source" do
   repository "https://svn.kuali.org/repos/rice/trunk/"
   revision "HEAD"
   destination "/opt/src/rice"
+  user node[:rice][:user]  
   action :sync
   notifies :run, [resources(:bash => "impex_rice_database"), resources(:bash => "compile_rice_source")], :delayed
 end
+
+
+bash "update_source_access" do
+  cwd Chef::Config[:file_cache_path]
+  code <<-EOH
+    chmod -R 777 /opt/src/rice
+  EOH
+end
+
 
 bash "start_rice_sampleapp" do
   cwd Chef::Config[:file_cache_path]
