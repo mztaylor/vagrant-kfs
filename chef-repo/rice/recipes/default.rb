@@ -26,6 +26,13 @@ user node[:rice][:user] do
   shell "/bin/false"
 end
 
+directory "/home/#{node[:rice][:user]}" do
+  owner node[:rice][:user]
+  mode "0777"
+  action :create
+  recursive true
+end
+
 directory node[:rice][:config_dir] do
   owner node[:rice][:user]
   mode "0777"
@@ -67,7 +74,7 @@ end
 ENV['MAVEN_OPTS'] = " -Xmx1g -XX:MaxPermSize=256m "
 bash "impex_rice_database" do
   cwd Chef::Config[:file_cache_path]
-  usr node[:rice][:user]
+  user node[:rice][:user]
   code <<-EOH
     echo cd #{node[:rice][:src_dir]}/rice/db/impex/master
     cd #{node[:rice][:src_dir]}/rice/db/impex/master

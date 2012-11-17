@@ -103,9 +103,15 @@ Vagrant::Config.run do |config|
     chef.add_recipe "apt"
     chef.add_recipe "java::openjdk"
     chef.add_recipe "subversion"
+    chef.add_recipe "git"
     chef.add_recipe "maven"
     chef.add_recipe "tomcat"  
     chef.add_recipe "mysql::server"
+    chef.add_recipe "rice"
+    chef.add_recipe "rice::eclipse"
+    chef.add_recipe "rice::intellij"
+    chef.add_recipe "rice::desktop"
+    chef.add_recipe "rice::rtools"      
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,

@@ -11,8 +11,9 @@ site 'http://community.opscode.com/api/v1'
  cookbook 'maven'
  cookbook 'tomcat'
  cookbook 'database'
+ cookbook 'git'
  cookbook 'rice',
   :path => 'chef-repo/rice'
-
+ 
  cookbook 'mysql',
    :git => 'https://github.com/mztaylor/mysql'
