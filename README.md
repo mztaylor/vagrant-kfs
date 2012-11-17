@@ -20,9 +20,20 @@ make generating development environments easier (by using a vm, ec2 instance, or
  - notes for vagrant found at http://vagrantup.com/v1/docs/getting-started/index.html
  - added chef cookbooks for java, svn, mvn, mysql, tomcat
 
+### Setup process
 
-    git clone https://github.com/mztaylor/vagrant-kfs.git
-    cd vagrant-kfs
-    cp ~/.m2/repository/com/oracle/ojdbc14/10.2.0.3.0/ojdbc14-10.2.0.3.0.jar ./cookbooks/rice/files/default/ojdbc14.jar
-    librarian-chef install
-    vagrant up
+     git clone https://github.com/mztaylor/vagrant-kfs.git
+     cd vagrant-kfs
+     cp ~/.m2/repository/com/oracle/ojdbc14/10.2.0.3.0/ojdbc14-10.2.0.3.0.jar ./cookbooks/rice/files/default/ojdbc14.jar
+     librarian-chef install
+     vagrant up
+
+
+## Todo
+- Fix permission issues
+- Find workaround for missing oracle jdbc jar
+- Deploy rice on tomcat server
+- Determine how much work to setup project in intellij/eclipse via command line/scripting
+- Get kfs up and running
+- refactor and document
+
