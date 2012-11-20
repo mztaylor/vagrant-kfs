@@ -5,20 +5,29 @@ Using this is a starting point for building Rice and KFS from a template script.
 make generating development environments easier (by using a vm, ec2 instance, or chef scripts on their local env).
 
 ## Prerequisites 
-- Oracle Virtualbox 4.0.12+
-- Ruby 1.9.x+
+- Oracle Virtualbox 4.0.12+ (https://www.virtualbox.org/wiki/Downloads)
+- Ruby 1.9.x+ (http://www.ruby-lang.org/en/downloads/)
 - Vagrant (www.vagrantup.com)
 - Chef Solo (www.opscode.com TBD)
 - Veewee 0.30+ (https://github.com/jedi4ever/veewee)
 - librarian-chef
-- ojdbc14.jar (download from oracle.com)
+- ojdbc14.jar (http://www.oracle.com)
 
 ## Steps
-- Install ruby, librarian-chef, virtualbox and vagrant
 - Download oracle 10.2.0.3.0 jdbc driver jar 
- - suggest using railsinstaller.org for ruby install
- - notes for vagrant found at http://vagrantup.com/v1/docs/getting-started/index.html
- - added chef cookbooks for java, svn, mvn, mysql, tomcat
+ - url: http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html
+- Download and install ruby
+ - notes: windows users - suggest using railsinstaller.org for ruby install (http://rubyinstaller.org/)
+- Install virtualbox
+ - url: https://www.virtualbox.org/wiki/Downloads
+- Install librarian
+ - execute: gem install librarian
+- Install vagrant
+ - url: http://downloads.vagrantup.com/
+- Install veewee
+ - execute: gem install veewee
+- notes:
+ - Review vagrant docs found at http://vagrantup.com/v1/docs/getting-started/index.html
 
 ### Setup process
 

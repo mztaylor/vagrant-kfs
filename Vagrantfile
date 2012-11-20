@@ -113,7 +113,9 @@ Vagrant::Config.run do |config|
     chef.add_recipe "rice::eclipse"
     chef.add_recipe "rice::intellij"
     chef.add_recipe "rice::desktop"
-    chef.add_recipe "rice::rtools"      
+    chef.add_recipe "rice::rtools"
+    chef.add_recipe "rice::mysql-workbench" 
+    chef.add_recipe "rice::kfs"    
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
