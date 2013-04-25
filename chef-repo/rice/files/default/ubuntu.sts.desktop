@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Spring Tool Suite
+Comment=Eclipse Integrated Development Environment
+Icon=/opt/springsource/sts-3.2.0.RELEASE/icon.xpm
+Exec=/opt/springsource/sts-3.2.0.RELEASE/STS
+Terminal=false
+Categories=Development;IDE;Java;
