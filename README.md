@@ -8,8 +8,6 @@ make generating development environments easier (by using a vm, ec2 instance, or
 - Oracle Virtualbox 4.0.12+ (https://www.virtualbox.org/wiki/Downloads)
 - Ruby 1.9.x+ (http://www.ruby-lang.org/en/downloads/)
 - Vagrant (www.vagrantup.com)
-- Chef Solo (www.opscode.com TBD)
-- Veewee 0.30+ (https://github.com/jedi4ever/veewee)
 - librarian-chef
 - ojdbc14.jar (http://www.oracle.com)
 
@@ -24,8 +22,6 @@ make generating development environments easier (by using a vm, ec2 instance, or
  - execute: gem install librarian
 - Install vagrant
  - url: http://downloads.vagrantup.com/
-- Install veewee
- - execute: gem install veewee
 - notes:
  - Review vagrant docs found at http://vagrantup.com/v1/docs/getting-started/index.html
 
@@ -36,7 +32,6 @@ make generating development environments easier (by using a vm, ec2 instance, or
      cp ~/.m2/repository/com/oracle/ojdbc14/10.2.0.3.0/ojdbc14-10.2.0.3.0.jar ./cookbooks/rice/files/default/ojdbc14.jar
      librarian-chef install
      vagrant up
-
 
 ## Todo
 - Fix permission issues
