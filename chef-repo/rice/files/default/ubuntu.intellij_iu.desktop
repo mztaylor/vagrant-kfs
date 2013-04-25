@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Intellij Ultimate
+Comment=Intellij Integrated Development Environment
+Icon=/opt/intellij/idea-IU/bin/idea.png
+Exec=/opt/intellij/idea-IU/bin/idea.sh
+Terminal=false
+Categories=Development;IDE;Java;
