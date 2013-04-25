@@ -21,7 +21,7 @@
 
 ## intellij
 
-cookbook_file "/usr/share/applications/intellij.desktop" do
+cookbook_file "/usr/share/applications/intellij_iu.desktop" do
   source "ubuntu.intellij.desktop"
   owner node[:rice][:user]
   backup false
