@@ -63,10 +63,10 @@ Vagrant::Config.run do |config|
 		"maven" => {
 		  "version" => "3", 
 		  "2" => {
-		   "url" => "http://apache.cs.utah.edu/maven/maven-2/2.2.1/binaries/apache-maven-2.2.1-bin.tar.gz"
+		   "url" => "http://apache.osuosl.org/maven/maven-2/2.2.1/binaries/apache-maven-2.2.1-bin.tar.gz"
 		  },
 		  "3" => {
-		    "url" => "http://apache.cs.utah.edu/maven/maven-3/3.0.4/binaries/apache-maven-3.0.4-bin.tar.gz"
+		    "url" => "http://apache.osuosl.org/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz"
 		  }
 		}
     }
@@ -82,8 +82,8 @@ Vagrant::Config.run do |config|
     chef.add_recipe "tomcat"  
     chef.add_recipe "mysql::server"
     chef.add_recipe "rice"
-    chef.add_recipe "rice::eclipse"
-    chef.add_recipe "rice::intellij"
+    chef.add_recipe "rice::spring_tool_suite"
+    chef.add_recipe "rice::intellij_ultimate"
     chef.add_recipe "rice::desktop"
     chef.add_recipe "rice::rtools"
     chef.add_recipe "rice::mysql-workbench" 
